@@ -6,3 +6,4 @@
 	TRAP	x25
 N	.FILL	x0A18
 Result	.BLKW	1
+	.END
