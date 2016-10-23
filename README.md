@@ -2,7 +2,7 @@
 This repository has example problem statements for students to work on. For each problem statement there will be a short description. If and when I am able I will post a starter file for each.
 * Exercise 1: [rightmost.asm](rightmost/rightmost.asm)  
 Problem Statement: Find the rightmost bit that is set (1) in the binary representation of a given number N  
-* Exercise 2: 
+* Exercise 2: [bitRis.asm](bitRis/bitRis.asm)  
 Problem Statement: Find bit r (0 to 15) of the binary representation of a given number N  
 * Exercise 3:  
 Problem Statment: What is the quotient and remainder of X divided by N. X and N are given, write Q and R to memory  
