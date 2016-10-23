@@ -1,4 +1,4 @@
-# lc3-exercises (10/23/2016)
+# lc3-exercises
 This repository has example problem statements for students to work on. For each problem statement there will be a short description. If and when I am able I will post a starter file for each.
 * Exercise 1: [rightmost.asm](rightmost/rightmost.asm)  
 Problem Statement: Find the rightmost bit that is set (1) in the binary representation of a given number N  
