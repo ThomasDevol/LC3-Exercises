@@ -9,3 +9,4 @@ Problem Statment: What is the quotient and remainder of X divided by N. X and N 
 * Exercise 4:
 Problem Statement: Find the r'th largest element in an array of N elements stored at location x4500. r and N are given
 * Exercise 5:
+Problem Statement: Find the most frequently occurring number in an array of numbers stored at location x5000. The numbers are terminated by a -1 and can range from 0 to 9. Write the result after the end of the array.
