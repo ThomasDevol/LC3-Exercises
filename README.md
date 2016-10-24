@@ -6,7 +6,7 @@ Problem Statement: Find the rightmost bit that is set (1) in the binary represen
 * Exercise 2: [bitRis.asm](bitRis/bitRis.asm)  
 Problem Statement: Find bit r (0 to 15) of the binary representation of a given number N  
 ----
-* Exercise 3: [qANDr.asm](qANDr/qANDr.asm)  
+* Exercise 3: [qANDr.asm](qANDr/qANDr.asm) [Inputs.asm](qANDr/Inputs.asm)  
 Problem Statment: What is the quotient and remainder of X divided by N. X and N are given, write Q and R to memory    
 ----
 * Exercise 4:  
