@@ -23,4 +23,5 @@ b) Sort the records by keeping the records where they are and simply moving the 
 Problem Statement: Given a number N stored at memory location x4500. Where N can be any number between 0 and 32767. Print the number on the console. Modify Exercise 3 to get subroutines Quotient and Remainder. Implement a Stack to save (push) and  the digits as you figure them out right to left and pop and display them once you processed all digits.
 ----
 * Exercise 8:
-Problem Statement: Prompt the user to guess a number between 0 and 100. Ask the user questions
+Problem Statement: Prompt the user to guess a number between 0 and 100. Ask the user questions of the form: Is the number you guessed greater than a value. Use the response to ask your next question. See if you can figure out what the guessed number is?
+
