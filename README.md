@@ -24,4 +24,6 @@ Problem Statement: Given a number N stored at memory location x4500. Where N can
 ----
 * Exercise 8:
 Problem Statement: Prompt the user to guess a number between 0 and 100. Ask the user questions of the form: Is the number you guessed greater than a value. Use the response to ask your next question. See if you can figure out what the guessed number is?
-
+----
+* Exercise 9:
+Problem Statement: Given two numbers _M_, _N_stored at _x4000_ and _x4001_, multiply them and put result in _x4002_.
