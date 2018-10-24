@@ -3,10 +3,10 @@ This repository has example problem statements for students to work on. For each
 * Exercise 1: [rightmost.asm](rightmost/rightmost.asm)  
 Problem Statement: Find the rightmost bit that is set (1) in the binary representation of a given number N  
 ----
-* Exercise 2: [bitRis.asm](bitRis/bitRis.asm)  
+* __Exercise 2__: [bitRis.asm](bitRis/bitRis.asm)  
 Problem Statement: Find bit r (0 to 15) of the binary representation of a given number N  
 ----
-* Exercise 3: [qANDr.asm](qANDr/qANDr.asm) [Inputs.asm](qANDr/Inputs.asm)  
+* __Exercise 3__: [qANDr.asm](qANDr/qANDr.asm) [Inputs.asm](qANDr/Inputs.asm)  
 Problem Statment: What is the quotient and remainder of X divided by N. X and N are given, write Q and R to memory    
 ----
 * Exercise 4:  
