@@ -3,7 +3,7 @@ This repository has example problem statements for students to work on. For each
 * Exercise 1: [rightmost.asm](rightmost/rightmost.asm)  
 Problem Statement: Find the rightmost bit that is set (1) in the binary representation of a given number N  
 ----
-* __Exercise 2__: [bitRis.asm](bitRis/bitRis.asm)  
+* Exercise 2: [bitRis.asm](bitRis/bitRis.asm)  
 Problem Statement: Find bit r (0 to 15) of the binary representation of a given number N  
 ----
 * __Exercise 3__: [qANDr.asm](qANDr/qANDr.asm) [Inputs.asm](qANDr/Inputs.asm)  
