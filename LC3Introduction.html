@@ -13117,8 +13117,14 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="LC3-Notebook">LC3 Notebook<a class="anchor-link" href="#LC3-Notebook">&#182;</a></h1><p><em>Author</em>: <strong>Ramesh Yerraballi</strong> <br>
-<em>Date</em>: <strong>10/22/18</strong> <br></p>
-<p>This is a LC3 <a href="https://jupyter.org/">Jupyter</a> notebook. We can write LC3 code directly and run it. No need for an editor and a simulator. Thanks to Doug Blank for the <a href="https://github.com/Calysto/calysto_lc3">Calysto LC3 Kernel</a></p>
+<em>Date</em>: <strong>9/27/19</strong> <br></p>
+<p>This is a LC3 <a href="https://jupyter.org/">Jupyter</a> notebook. We can write LC3 code directly and run it. No need for an editor and a simulator. Thanks to Doug Blank for the <a href="https://github.com/Calysto/calysto_lc3">Calysto LC3 Kernel</a>. I made a small enhancement to Mr. Blank's kernel which allows one to show the contents of the console:</p>
+
+<pre><code>Console output from running OS services, OUT and PUTS get printed out directly, 
+which gets mixed up with other messages from the kernel. I keep track of the 
+console state and provided a a console command that prints the current contents 
+of the console. It is demonstrated below. The modified kernel.py and lc3.py files 
+are available on my github at: [https://github.com/DrY-Courses/lc3-exercises]</code></pre>
 <p>In this notebook I will explain some basic LC3 Concepts:</p>
 <ol>
 <li>The ISA</li>
