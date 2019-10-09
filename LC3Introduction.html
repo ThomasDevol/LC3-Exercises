@@ -13017,45 +13017,6 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
-<style type="text/css">
-    
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-bold { font-weight: bold; }
-
-    </style>
 
 
 <style type="text/css">
@@ -13122,7 +13083,7 @@ div#notebook {
 
 <pre><code>Console output from running OS services, OUT and PUTS get printed out directly, 
 which gets mixed up with other messages from the kernel. I keep track of the 
-console state and provided a a console command that prints the current contents 
+console state and provided a console command that prints the current contents 
 of the console. It is demonstrated below. The modified kernel.py and lc3.py files 
 are available on my github at: [https://github.com/DrY-Courses/lc3-exercises]</code></pre>
 <p>In this notebook I will explain some basic LC3 Concepts:</p>
@@ -13157,15 +13118,15 @@ are available on my github at: [https://github.com/DrY-Courses/lc3-exercises]</c
 <img src="LC3-ISA.png" alt="LC3 ISA"></li>
 </ol>
 </li>
-<li><p>LC3 has 8 general-purpose registers called $\texttt{R_0},\texttt{R_1},\texttt{R_2},\texttt{R_3},\texttt{R_4},\texttt{R_5},\texttt{R_6},\texttt{R_7}$ and, two special registers, PC (holds the location/address of the <em>next</em> instruction), IR (holds the instruction currently executing)  and PSR (holds the status of the processor, specifically the <code>N</code>,<code>Z</code>, and <code>P</code> bits, collectively referred to as the Condition Code (<code>CC</code>) bits.</p>
+<li><p>LC3 has 8 general-purpose registers called <code>R0</code>,<code>R1</code>,<code>R2</code>,<code>R3</code>,<code>R4</code>,<code>R5</code>,<code>R6</code>,<code>R7</code> and, three special registers, <code>PC</code> (<strong>Program Counter</strong> holds the location/address of the <strong>next</strong> instruction), <code>IR</code> (<strong>Instruction Register</strong> holds the instruction currently executing)  and <code>PSR</code> (<strong>Processor Status Register</strong> holds the status of the processor, specifically the <code>N</code>,<code>Z</code>, and <code>P</code> bits, collectively referred to as the Condition Code (<code>CC</code>) bits.</p>
 </li>
-<li>LC3's memory is made of $2^{16}$ locations (<em>address space</em>) of $16$ bits (<em>addressability</em>) each. You can think of memory as a table with $2^{16}$ rows and $16$ columns.</li>
-<li>LC3 supports <em>five</em> addressing modes. This tells us <em>where</em> an operaand to an operation can be found. <ol>
-<li>Register: In a register</li>
-<li>Immediate: In the instruction itself as a signed integer</li>
-<li>PC+Offset: At a position relative to the PC</li>
-<li>Base+Offset: At a position relative to a Base-register</li>
-<li>Indirect: At an address to be found at a position relative to the PC
+<li>LC3's memory is made of $2^{16}$ locations (<strong>address space</strong>) of $16$ bits (<strong>addressability</strong>) each. You can think of memory as a table with $2^{16}$ rows and $16$ columns.</li>
+<li>LC3 supports <strong>five</strong> addressing modes. This tells us <strong>where</strong> an operand in an operation can be found. <ol>
+<li><strong>Register</strong>: In a register</li>
+<li><strong>Immediate</strong>: In the instruction itself as a signed integer</li>
+<li><strong>PC+Offset</strong>: At a position relative to the PC</li>
+<li><strong>Base+Offset</strong>: At a position relative to a Base-register</li>
+<li><strong>Indirect</strong>: At an address to be found at a position relative to the PC
 <a href="https://www.youtube.com/watch?feature=player_embedded&v=O4rrJieY7xc" target="_blank"><img src="https://img.youtube.com/vi/O4rrJieY7xc/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a></li>
 </ol>
@@ -13183,7 +13144,7 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a></li>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Assembler">Assembler<a class="anchor-link" href="#Assembler">&#182;</a></h2><p>Programmers write code in assembly language which uses mnemonics (symbols) to represent instructions. Each instruction is made up of an <em>operation</em> and one or more <em>operand(s)</em>. The computer only understands instructions expressed in <em>binary</em>. So, an <strong>assembler</strong> converts instructions written in assembly to binary that the machine understands. The binary version of the instruction is also referred to as <em>machine code</em>. The LC3 assembler allows the programmer to express their intent (the program) using <em>instructions</em> supported by the ISA and, <em>pseudo-ops</em>, that are commands to the assembler. Pseudo-ops are easily recognized by the fact that they have a period (<code>.</code>) at their beginning. For instance, the pseudo-op, <code>.ORIG x3000</code> tells the assembler that the code that follows must be loaded to the location <code>x3000</code>.</p>
+<h2 id="Assembler">Assembler<a class="anchor-link" href="#Assembler">&#182;</a></h2><p>Programmers write code in assembly language which uses mnemonics (symbols) to represent instructions. Each instruction is made up of an <em>operation</em> and one or more <em>operand(s)</em>. The computer only understands (and is able to execute/run) instructions expressed in <em>binary</em>. So, an <strong>assembler</strong> converts instructions written in assembly to binary that the machine understands. The binary version of the instruction is also referred to as <em>machine code</em>. The LC3 assembler allows the programmer to express their intent (the program) using <em>instructions</em> supported by the ISA and, <strong>pseudo-ops</strong>, which are commands to the assembler. Pseudo-ops are easily recognized by the fact that they have a period (<code>.</code>) at their beginning. For instance, the pseudo-op, <code>.ORIG x3000</code> tells the assembler that the code that follows must be loaded to the location <code>x3000</code>.</p>
 
 </div>
 </div>
@@ -13194,13 +13155,13 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a></li>
 <h2 id="Instruction-Execution">Instruction Execution<a class="anchor-link" href="#Instruction-Execution">&#182;</a></h2><p>The execution of an individual instruction in LC3 happens in 6 stages:</p>
 <ol>
 <li><strong>Instruction Fetch</strong>: The instruction is fetched from Memory to CPU (IR register); The PC is updated</li>
-<li><strong>Decode</strong>: The most significant 4 bits IR[15-12] are decoded to figure out what theis instruction is.</li>
+<li><strong>Decode</strong>: The most significant 4 bits IR[15-12] are decoded to figure out what the instruction is.</li>
 <li><strong>Evaluate Address</strong>: <strong>If</strong> there is an address to be computed, for example, in LD/ST, LDR/STR, LEA, LDI/STI and, BR, JSR, TRAP, JMP <strong>Then</strong> the address computation is done here. </li>
-<li><strong>Fetch Operands</strong>: <strong>If</strong> there is an operand tthat needs to be brought in from <strong>Memory</strong> <strong>then</strong> this is the stage in which this happens. Only LD, LDR, LDI have an an operand fetch. Arithmetic operations get their operands from registers or the IR (in case of immediate operand), so there is no need to go to memory.</li>
+<li><strong>Fetch Operands</strong>: <strong>If</strong> there is an operand that needs to be brought in from <strong>Memory</strong> <strong>then</strong> this is the stage in which this happens. Only LD, LDR, LDI have an operand fetch. Arithmetic operations get their operands from registers or the IR (in case of immediate operand), so there is no need to go to memory.</li>
 <li><strong>Execute</strong>: Any arithmetic/logic work and, the decision to branch or not to branch happen in this stage. </li>
 <li><strong>Store Result</strong>: The writing of the result to the destination register happens in this stage.</li>
 </ol>
-<p>The following video will explain the instruction execution (aka instruction cycle) in more detail:
+<p>The following video explains the instruction execution (aka instruction cycle) in more detail:
 <a href="https://www.youtube.com/watch?feature=player_embedded&v=FvHzVspAq5o" target="_blank"><img src="https://img.youtube.com/vi/FvHzVspAq5o/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a></p>
 
@@ -13308,7 +13269,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">regs</span>
@@ -13355,7 +13316,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="nf">ADD</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R4</span>
@@ -13386,7 +13347,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">dump</span>
@@ -13435,7 +13396,7 @@ Memory dump:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">dis</span>
@@ -13477,7 +13438,7 @@ Memory disassembled:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">pc</span> <span class="no">x2500</span>
@@ -13523,7 +13484,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">reg</span> <span class="mi">2</span> <span class="no">x0002</span>
@@ -13569,7 +13530,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">reg</span> <span class="mi">4</span> <span class="no">xFFFD</span>
@@ -13615,7 +13576,7 @@ R4: xFFFD R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -13676,7 +13637,7 @@ R4: xFFFD R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">reset</span>
@@ -13728,7 +13689,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="c">;*******************************</span>
@@ -13786,7 +13747,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">dis</span>
@@ -13849,7 +13810,7 @@ NOTSTAR:   x3015: x002D  NOOP - (no BR to x3043) (or 45, &#39;-&#39;)      [line
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">pc</span> <span class="no">x3000</span>
@@ -13887,7 +13848,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -13965,7 +13926,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -14018,7 +13979,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -14071,7 +14032,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -14124,7 +14085,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -14185,7 +14146,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -14230,7 +14191,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -14291,7 +14252,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">dis</span> <span class="no">x3007</span>
@@ -14353,7 +14314,7 @@ The first version tells the assembler explictly what the offset is (<code>xB</co
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -14412,7 +14373,7 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a></p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -14457,7 +14418,7 @@ R4: x0000 R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -14513,7 +14474,7 @@ R4: x002A R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -14558,7 +14519,7 @@ R4: x002A R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -14623,7 +14584,7 @@ R4: x002A R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">bp</span> <span class="no">x3010</span>
@@ -14657,7 +14618,7 @@ Breakpoints
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">step</span>
@@ -14702,7 +14663,7 @@ R4: x002A R5: x0000 R6: x0000 R7: x0000
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">cont</span>
@@ -14754,7 +14715,7 @@ R4: x002A R5: x0000 R6: x0000 R7: x3010
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">console</span>
@@ -14797,7 +14758,7 @@ Console:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">dis</span> <span class="no">x3010</span>
@@ -14860,7 +14821,7 @@ x3011: x70C1  STR R0, R3, <strong>1</strong>   <br></p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-gas"><pre><span></span><span class="err">%</span><span class="nf">cont</span>
