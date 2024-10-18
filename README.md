@@ -4,7 +4,7 @@ This repository has example problem statements for students to work on. For each
 * Exercise 0: [rightmost.asm](rightmost/rightmost.asm)  
 Problem Statement: Find the position _rightmost_ bit that is set (1) in the binary representation of a given number `N`. Count bit positions from right to left 0 to 15.
 Examples:
-    * If `N` is `x0088` then the rightmost one is at position `3` : `000000001000**1**000
+    * If `N` is `x0088` then the rightmost one is at position `3` : 000000001000**1**000
     * If `N` is `xA0B0` then the rightmost one is at position `4`
   
 ----
@@ -16,7 +16,7 @@ Problem Statement: Repeat Exercise 0 to find the _leftmost_ bit that is set (1) 
 * Exercise 2: [bitRis.asm](bitRis/bitRis.asm)  
 Problem Statement: Find bit r (0 to 15) of the binary representation of a given number N
 Examples:
-    * If `N` is `x0088` and `r` is `2` then the bit at position `2` in `x0000000010001**0**00` is 0.
+    * If `N` is `x0088` and `r` is `2` then the bit at position `2` in x0000000010001**0**00 is 0.
     * If `N` is `xA0B0` then the rightmost one is at position `4`
 ----
 * __Exercise 3__: [qANDr.asm](qANDr/qANDr.asm) [Inputs.asm](qANDr/Inputs.asm)  
