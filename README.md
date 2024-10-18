@@ -2,9 +2,9 @@
 This repository has example problem statements for students to work on. For each problem statement there will be a short description. If and when I am able I will post a starter file for each.
 
 * Exercise 0: [rightmost.asm](rightmost/rightmost.asm)  
-Problem Statement: Find the position _rightmost_ bit that is set (1) in the binary representation of a given number `N`.
+Problem Statement: Find the position _rightmost_ bit that is set (1) in the binary representation of a given number `N`. Count bit positions from right to left 0 to 15.
 Examples:
-    * If `N` is `x0088` then the rightmost one is at position `3` (count bit positions from right to left 0 to 15).
+    * If `N` is `x0088` then the rightmost one is at position `3` : `000000001000**1**000
     * If `N` is `xA0B0` then the rightmost one is at position `4`
   
 ----
@@ -14,13 +14,16 @@ Problem Statement: Repeat Exercise 0 to find the _leftmost_ bit that is set (1) 
 ----
 
 * Exercise 2: [bitRis.asm](bitRis/bitRis.asm)  
-Problem Statement: Find bit r (0 to 15) of the binary representation of a given number N  
+Problem Statement: Find bit r (0 to 15) of the binary representation of a given number N
+Examples:
+    * If `N` is `x0088` and `r` is `2` then the bit at position `2` in `x0000000010001**0**00` is 0.
+    * If `N` is `xA0B0` then the rightmost one is at position `4`
 ----
 * __Exercise 3__: [qANDr.asm](qANDr/qANDr.asm) [Inputs.asm](qANDr/Inputs.asm)  
 Problem Statment: What is the quotient and remainder of X divided by N. X and N are given, write Q and R to memory    
 ----
 * Exercise 4:
-Problem Statement: Given two numbers _M_, _N_stored at _x4000_ and _x4001_, multiply them and put result in _x4002_.
+Problem Statement: Given two numbers `M`, `N` stored at `x4000` and `x4001`, multiply them and put result in `x4002`. Write your program to starts at `x3000`
 
 * Exercise 5:  
 Problem Statement: Find the r'th largest element in an array of N elements stored at location x4500. r and N are given  
