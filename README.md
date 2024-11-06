@@ -16,8 +16,8 @@ Problem Statement: Repeat Exercise 0 to find the _leftmost_ bit that is set (1) 
 * Exercise 2: [bitRis.asm](bitRis/bitRis.asm)  
 Problem Statement: Find bit r (0 to 15) of the binary representation of a given number N
 Examples:
-    * If `N` is `x0088` and `r` is `2` then the bit at position `2` in x0000000010001**0**00 is 0.
-    * If `N` is `xA0B0` then the rightmost one is at position `4`
+    * If `N` is `x0088` and `r` is `2` then the bit at position `2` in 0000000010001**0**00 is 0.
+    * If `N` is `xA0B0` and `r` is `4` then the bit at position `4` in 10100000101**1**0000 is 1.
 ----
 * __Exercise 3__: [qANDr.asm](qANDr/qANDr.asm) [Inputs.asm](qANDr/Inputs.asm)  
 Problem Statment: What is the quotient and remainder of X divided by N. X and N are given, write Q and R to memory    
