@@ -31,10 +31,10 @@ Examples:
 6. <ins>Problem Statement</ins>: Given a number `N` stored at `x3020`, add the *higher byte of N* to the *lower byte of N* and store the result at `x3021`. For example, is `N = x1234` then the result is `x0012 + x0034  = x0046`.     
 ----
 
-7. <ins>Problem Statement</ins>: Given a two inputs `N` and `lr`, rotate the binary representation of `N `by `lr` places to the left. For example, if `N=x1234` and `lr=4` then the rotated result is `x2341`.    
+7. <ins>Problem Statement</ins>: Given two inputs `N` and `lr`, rotate the binary representation of `N `by `lr` places to the left. For example, if `N=x1234` and `lr=4` then the rotated result is `x2341`.    
 ----
 
-8. <ins>Problem Statement</ins>: Given a two inputs `N` and `rr`, rotate the binary representation of `N `by `rr` places to the right. For example, if `N=x1234` and `rr=4` then the rotated result is `x4123`.    
+8. <ins>Problem Statement</ins>: Given two inputs `N` and `rr`, rotate the binary representation of `N `by `rr` places to the right. For example, if `N=x1234` and `rr=4` then the rotated result is `x4123`.    
 
 ----
 
