@@ -42,7 +42,7 @@ Examples:
 the the new N will be `N=01010001011**1**1110` where bit `4` (counting up from the least significant bit being bit `0`) is set to 1. 
 ----
 
-10. <ins>Problem Statement</ins>: Find the r'th largest element in an array of N elements stored at location x4500. r and N are given  
+10. <ins>Problem Statement</ins>: Find the `r`'th largest element in an array of `N` elements stored at location `x4500`. `r` and `N` are given  
 ----
 
 11. <ins>Problem Statement</ins>: Find the most frequently occurring number in an array of numbers stored at location x5000. The numbers are terminated by a -1 and can range from 0 to 9. Write the result after the end of the array.
