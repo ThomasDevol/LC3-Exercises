@@ -8,6 +8,7 @@ Order of BRanch flags relaxed, BR without flags interpreted as BRnzp
 """
 
 from array import array
+import numpy as np
 import sys
 try:
     from IPython.display import HTML
@@ -136,7 +137,7 @@ class LC3(object):
         'JSRR': 0,
         'LD': 9,
         'LDI': 9,
-        'LDR': 6,
+        'LDR': 5, #RY: Changed LDR with Mode bit 5=> 0: Reg, 1: Imm
         'LEA': 9,
         'NOT': 9,
         'OUT': 0,
@@ -147,7 +148,7 @@ class LC3(object):
         'RTT': 0,
         'ST': 9,
         'STI': 9,
-        'STR': 6,
+        'STR': 5, #RY: Changed LDR with Mode bit 5=> 0: Reg, 1: Imm
         'TRAP': 8,
         'SHIFT': 6,  ## SHIFT R2, #1
     }
@@ -246,6 +247,8 @@ class LC3(object):
         self.source = {}
         self.cycle = 0
         self.orig = 0x3000
+        ## RY: Added to mark .END
+        self.end = 0x3000
         self.line_count = 1
         self.set_pc(HEX(0x3000))
         self.cont = True
@@ -257,6 +260,7 @@ class LC3(object):
         self.instructions = self.instruction_info.keys()
         self.regs = dict(('R%1i' % r, r) for r in range(8))
         self.labels = {}
+        self.reg_names = {}   ##RY: ISRG labels
         self.label_location = {}
         self.register = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0}
         self.reset_memory(runit=runit) # assembles OS
@@ -278,6 +282,7 @@ class LC3(object):
             self.run()
         self.source = {}
         self.labels = {}
+        self.reg_names = {}   ##RY: ISRG labels
         self.label_location = {}
         self.set_pc(0x3000)
         self.orig = HEX(0x3000)
@@ -475,7 +480,10 @@ class LC3(object):
         Process ready split words from line and parse the line use
         put to show the instruction line without label values
         """
-        self.source[self.get_pc()] = line_count
+        ##RY: Added this check to make sure the .ISRG directive
+        ##    is not counted as a line and not stored in source
+        if '.ISRG' not in words:
+            self.source[self.get_pc()] = line_count
         found = ''
         alltogether = "".join(words)
         alltogether1 = "".join(words[1:])
@@ -632,6 +640,13 @@ class LC3(object):
                 raise ValueError('Bad .BLKW immediate: "%s", %r' % (words[-1], value))
             self.increment_pc(value)
             return
+        ## RY: Adding the .ISRG Assembler Directive 
+        elif '.ISRG' in words:
+            value = self.get_immediate(words[-1])
+            if value is None or value < 0 or value > 7:
+                raise ValueError('Bad .ISRG : "%s", %r' % (words[-1], value))
+            self.reg_names[self.make_label(words[0])] = f"R{value}"
+            return
         elif '.SET' == words[0]:
             if words[1] == "MODE":
                 self.set_assembly_mode(words[2])
@@ -691,13 +706,17 @@ class LC3(object):
                 reg_pos = self.special_reg_pos[found]
             else:
                 reg_pos = self.reg_pos
-
             for word in words[1:]:
                 word = word.rstrip(',')
-                
+                ## RY: Change a Label to its register if it
+                ##     has already been defined
+                if (self.make_label(word) in self.reg_names):
+                    ##print(f"Replacing {word} with: ")
+                    word = f"{self.reg_names[self.make_label(word)]}"
+                    ##print(f"{word} \n")
                 if word in self.regs:
                     if found == "JMP":
-                        t = self.regs[word] << 6
+                        t = self.regs[word] << 6                            
                     else:
                         t = self.regs[word] << reg_pos[rc]
                     r |= t
@@ -706,8 +725,8 @@ class LC3(object):
                     value = self.get_immediate(word, self.immediate_mask[found])
                     if value is not None:
                         instruction |= value
-                        # set the immediate bit in ADD and AND instruction:
-                        if found in ('ADD', 'AND'): 
+                        # set the immediate bit in ADD and AND instruction: RY: Added LDR and STR too
+                        if found in ('ADD', 'AND', 'LDR', 'STR'): 
                             instruction |= 1 << 5
                     elif word != found:
                         if self.valid_label(word):
@@ -745,15 +764,23 @@ class LC3(object):
             # drop comments
             words = (line.split()) if ';' in line else line.split()
             if '.END' in words:
+                self.end = self.get_pc();
                 break
             self.process_instruction(words, self.line_count, line)
-            self.line_count += 1
+            if '.ISRG' not in words:
+                self.line_count += 1
         # second pass:
         for label, value in self.label_location.items():
+            ##RY: Do not handle ISRG labels in second pass
+            ##    We could have just added them to the label_location list
+            ##    but that would take a few more changes to process_instruction
+            if label in self.reg_names:
+                continue   
             if label not in self.labels:
                 raise ValueError('Bad label: "%s"' % label)
             else:
                 for ref, mask, bits in value:
+                    ## print("ref=%s mask=%s bits=%s\n" % ref, mask, bits)
                     current = self.labels[label] - ref - 1
                     # kludge for absolute addresses,
                     # but seems correct for some code (lc3os.asm)
@@ -777,8 +804,7 @@ class LC3(object):
                         else:
                             self.set_memory(ref, 
                                             plus(self.get_memory(ref), 
-                                                 lc_bin(mask & current)))
-
+                                                 lc_bin(mask & current)))                                            
     def handleDebug(self, lineno):
         pass
 
@@ -928,15 +954,28 @@ class LC3(object):
     def STR(self, instruction):
         src = (instruction & 0b0000111000000000) >> 9
         base = (instruction & 0b0000000111000000) >> 6
-        offset6 = instruction & 0b0000000000111111
-        self.set_memory(plus(self.get_register(base), sext(offset6, 6)),
+         ## RY: Adding option for offset to be register
+        if (instruction & 0b0000000000100000) == 0:
+            offreg = instruction & 0b0000000000000111
+            self.set_memory(plus(self.get_register(base), self.get_register(offreg)),
+                        self.get_register(src))
+        else:
+            offset5 = instruction & 0b0000000000011111
+            location = plus(self.get_register(base), sext(offset5,5))       
+            offset5 = instruction & 0b0000000000011111
+            self.set_memory(plus(self.get_register(base), sext(offset5, 5)),
                         self.get_register(src))
 
     def STR_format(self, instruction, location):
         src = (instruction & 0b0000111000000000) >> 9
         base = (instruction & 0b0000000111000000) >> 6
-        offset6 = instruction & 0b0000000000111111
-        return "STR R%d, R%d, %s" % (src, base, offset6)
+        ## RY: Adding option for offset to be register
+        if (instruction & 0b0000000000100000):
+            offset5 = instruction & 0b0000000000011111
+            return "STR R%d, R%d, %s" % (src, base, lc_int(sext(offset5, 5)))
+        else:
+            offreg = instruction & 0b0000000000000111
+            return "STR R%d, R%d, R%d" % (dst, base, offreg)
 
     def RTI(self, instruction):
         if (self.psr & 0b1000000000000000):
@@ -1120,8 +1159,13 @@ class LC3(object):
     def LDR(self, instruction):
         dst =  (instruction & 0b0000111000000000) >> 9
         base = (instruction & 0b0000000111000000) >> 6
-        offset6 = instruction & 0b0000000000111111
-        location = plus(self.get_register(base), sext(offset6,6))
+        ## RY: Adding option for offset to be register
+        if (instruction & 0b0000000000100000) == 0:
+            offreg = instruction & 0b0000000000000111
+            location = plus(self.get_register(base), self.get_register(offreg))
+        else:
+            offset5 = instruction & 0b0000000000011111
+            location = plus(self.get_register(base), sext(offset5,5))
         memory = self.get_memory(location)
         if self.debug:
             self.Print("  Reading memory[x%04x] (x%04x) =>" % (location, memory))
@@ -1131,8 +1175,13 @@ class LC3(object):
     def LDR_format(self, instruction, location):
         dst = (instruction & 0b0000111000000000) >> 9
         base = (instruction & 0b0000000111000000) >> 6
-        offset6 = instruction & 0b0000000000111111
-        return "LDR R%d, R%d, %s" % (dst, base, offset6)
+        ## RY: Adding option for offset to be register
+        if (instruction & 0b0000000000100000) == 0:
+            offreg = instruction & 0b0000000000000111
+            return "LDR R%d, R%d, R%d" % (dst, base, offreg)
+        else:
+            offset5 = instruction & 0b0000000000011111
+            return "LDR R%d, R%d, #%s" % (dst, base, lc_int(sext(offset5, 5)))
 
     def ST(self, instruction):
         src = (instruction & 0b0000111000000000) >> 9
@@ -1250,7 +1299,7 @@ class LC3(object):
         return "TERMINAL R%d, %d" % (src, clear)
 
     def SHIFT_format(self, instruction, location):
-        ## SHIFT DST, SRC, DIR, immed4
+        ## SHIFT DST, SRC, imm6
         dst = (instruction & 0b0000111000000000) >> 9
         src = (instruction & 0b0000000111000000) >> 6
         imm6 = instruction & 0b0000000000111111
@@ -1364,18 +1413,22 @@ class LC3(object):
         # producing output
         # symbol list for Simulators
         with open(base + '.sym', 'w') as f:
-            self.Print('''//Symbol Name		Page Address
+            print('''//Symbol Name		Page Address
 //----------------	------------
 //''', end='\t', file=f)
         
-            self.Print('\n//\t'.join('\t%-20s%4x' % (name, value)
+            print('\n//\t'.join('\t%-20s%4x' % (name, value)
                             for name, value in self.labels.items()), file=f)
         
         with open(base + '.bin', 'w') as f:
-            self.Print('{0:016b}'.format(self.orig), file=f)  # orig address
-            self.Print('\n'.join('{0:016b}'.format(self.get_memory(m)) for m in range(self.orig, self.get_pc())),
-                    file=f)
-    
+            print('{0:016b}'.format(self.orig), file=f) # orig address
+            ##RY: Use mem instead of the actual memory because
+            ##    treating it is unsigned short ensures a proper
+            ##    conversion to binary. 
+            mem = np.array(self.memory, dtype=np.ushort)
+            for m in range(self.orig, self.end):
+                #print('{0:016b}'.format(self.get_memory(m)),file=f) 
+                print('{0:016b}'.format(mem[m]),file=f) 
         # object file for running in Simulator
         with open(base + '.obj', 'wb') as f:
             #do slice from right after code and write
@@ -1512,6 +1565,15 @@ class LC3(object):
                         self.Error("\nRuntime error:\n    memory %s\n%s" % 
                                    (lc_hex(self.get_pc() - 1), str(exc)))
                     ok = False
+                return ok
+            elif words[0] == "%file":
+                ## RY: Could be from a file or from cell
+                text = self.load(words[1])
+                self.assemble(text)
+                self.Print(f"Loaded and Assembled {words[1]}! \n Use %dis or %dump to examine; use %exe to run.")
+                #self.dump()
+                #self.dump_registers()
+                ok = True
                 return ok
             else:
                 self.Error("Invalid Interactive Magic Directive\nHint: %help")

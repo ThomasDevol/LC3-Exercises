@@ -36,7 +36,7 @@ LC3 Interactive Magic Directives:
  %regs                              - show registers
  %reset                             - reset LC3 to start state
  %step                              - execute the next instruction, increment PC
- %console                           - print the contents of the console                                                                       
+ %console                           - print the contents of the console
 
 HEX values begin with an 'x' and are composed of 4 0-F digits or letters.
 
@@ -101,7 +101,10 @@ Create a breakpoint at location x3005:
 """
         elif expr == "%step":
             return """%step - Execute the next instruction
-"""                               
+"""
+        elif expr == "%console":
+            return """%console - print the contents of the console
+"""
         elif none_on_fail:
             return None
         else:
