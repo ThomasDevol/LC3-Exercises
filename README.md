@@ -6,7 +6,6 @@ This repository has example problem statements for students to work on. For each
 Examples:
     * If `N` is `x0088` then the rightmost one is at position `3` : 000000001000**1**000
     * If `N` is `xA0B0` then the rightmost one is at position `4`
-
 ----
 
 2.   <ins>Problem Statement</ins>: Repeat Exercise 0 to find the _leftmost_ bit that is set (1) in the binary representation of a given number N  
@@ -14,13 +13,15 @@ Examples:
 ----
 
 3.  [bitRis.asm](bitRis/bitRis.asm)  
-Problem Statement: Find bit r (0 to 15) of the binary representation of a given number N
+<ins>Problem Statement</ins>: Find bit r (0 to 15) of the binary representation of a given number N
 Examples:
     * If `N` is `x0088` and `r` is `2` then the bit at position `2` in 0000000010001**0**00 is 0.
     * If `N` is `xA0B0` and `r` is `4` then the bit at position `4` in 10100000101**1**0000 is 1.
+
 ----
+
 4.  [qANDr.asm](qANDr/qANDr.asm) [Inputs.asm](qANDr/Inputs.asm)  
-<ins>Problem Statement</ins>: What is the quotient and remainder of X divided by N. X and N are given, write Q and R to memory    
+<ins>Problem Statement</ins>: What is the quotient and remainder of `X` divided by `N`. `X` and `N` are given at `x3020` and `x3021`, write `Q` and `R` to `x3022` and `x3023`.
 
 ---- 
 
