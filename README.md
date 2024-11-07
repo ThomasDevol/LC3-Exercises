@@ -23,7 +23,7 @@ Examples:
 4.  [qANDr.asm](qANDr/qANDr.asm) [Inputs.asm](qANDr/Inputs.asm)  
 <ins>Problem Statement</ins>: What is the quotient and remainder of `X` divided by `N`. `X` and `N` are given at `x3020` and `x3021`, write `Q` and `R` to `x3022` and `x3023`.
 
----- 
+----
 
 5. 
 <ins>Problem Statement</ins>: Given two numbers `M`, `N` stored at `x4000` and `x4001`, multiply them and put result in `x4002`. Write your program to starts at `x3000`.
@@ -35,11 +35,11 @@ Examples:
 
 7.    
 <ins>Problem Statement</ins>: Find the r'th largest element in an array of N elements stored at location x4500. r and N are given  
-----  
+----
 
 8.  
 <ins>Problem Statement</ins>: Find the most frequently occurring number in an array of numbers stored at location x5000. The numbers are terminated by a -1 and can range from 0 to 9. Write the result after the end of the array.
-----  
+----
 
 9. 
 <ins>Problem Statement</ins>: Sort an array of student records by their Totals. You are given an array of pointers, where each pointer is an address to a student record - The array is null-terminated. Each record contains a student's scores on assignments, exams and programs followed by a Total which you have to calculate. So, the processing is done in two steps:   a) Calculate the Totals for each student  
