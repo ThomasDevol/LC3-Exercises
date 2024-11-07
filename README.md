@@ -6,13 +6,10 @@ Problem Statement: Find the position _rightmost_ bit that is set (1) in the bina
 Examples:
     * If `N` is `x0088` then the rightmost one is at position `3` : 000000001000**1**000
     * If `N` is `xA0B0` then the rightmost one is at position `4`
-  
 ----
-
 2.    
 Problem Statement: Repeat Exercise 0 to find the _leftmost_ bit that is set (1) in the binary representation of a given number N  
 ----
-
 3.  [bitRis.asm](bitRis/bitRis.asm)  
 Problem Statement: Find bit r (0 to 15) of the binary representation of a given number N
 Examples:
