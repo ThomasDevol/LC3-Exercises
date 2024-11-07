@@ -32,7 +32,7 @@ Examples:
 ----
 
 7. <ins>Problem Statement</ins>: Given three inputs `N`, `r` and `b`, set the `r`'th bit of `N` to `b`. For example, if `N=0101000101101110` and `r=4` and `b=1` then
-the the new N will be `N=01010001011**1**1110
+the the new N will be `N=01010001011**1**1110`
 ----
 
 8. <ins>Problem Statement</ins>: Find the r'th largest element in an array of N elements stored at location x4500. r and N are given  
