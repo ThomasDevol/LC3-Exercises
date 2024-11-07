@@ -28,7 +28,7 @@ Examples:
 5. <ins>Problem Statement</ins>: Given two numbers `M`, `N` stored at `x4000` and `x4001`, multiply them and put result in `x4002`. Write your program to starts at `x3000`.
 ----
 
-6. <ins>Problem Statement</ins>: Given a number `N` stored at `x3020`, add the __higher byte of N__ to the __lower byte__ and store the result at `x3021`. For example, is `N = x1234` then the result is `x0012 + x0034  = x0046`.     
+6. <ins>Problem Statement</ins>: Given a number `N` stored at `x3020`, add the *higher byte of N* to the *lower byte* and store the result at `x3021`. For example, is `N = x1234` then the result is `x0012 + x0034  = x0046`.     
 ----
 
 7. <ins>Problem Statement</ins>: Find the r'th largest element in an array of N elements stored at location x4500. r and N are given  
