@@ -27,4 +27,3 @@ Mask    .FILL x8000                              ; MSB
 Result  .BLKW   1                                                ; storage for LSB index
 
 .END
-PS C:\Users\devol\lc3-exercises\problem1>
