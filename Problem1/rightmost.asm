@@ -14,7 +14,7 @@ LOOP
 	BRn DONE
 	AND R0, R1, R3					; if MSB is zero then do not update R2
 	BRz INC
-	ADD R2, R4, #0					; update rightmost bit that is set
+	ADD R2, R4, #1					; update rightmost bit that is set
 
 INC
 	ADD R1, R1, R1					; left bit shift
