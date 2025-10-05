@@ -25,6 +25,6 @@ DONE
 
 Test	  .FILL	x0A18			   ; given value
 Mask    .FILL x8000				 ; MSB
-Result	.BLKW	1
+Result	.BLKW	1						 ; storage for LSB index
 
 .END
