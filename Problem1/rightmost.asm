@@ -2,6 +2,8 @@
 ; When your program terminates, location Result should have the value 3 (leftmost 1 in N:x0A18 is at location 3)
 .ORIG	x3000
 
+AND R2, R2, #0
+ADD R2, R2, #-1						; covers if no selective bits are found
 AND R4, R4, #0
 ADD R4, R4, #15						; counter for current index
 LD R1, Test
